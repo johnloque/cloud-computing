@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 import pandas as pd
+import numpy as np
 
 app = Flask(__name__)
 
@@ -32,3 +33,9 @@ def home():
 @app.route('/db')
 def display_db():
     return render_template('db.html', db=db)
+
+@app.route('/play')
+def display_word():
+    new_word_id = draw_word()
+    new_word = db[new_word_id]['words']
+    return render_template('play.html', new_word=new_word)
