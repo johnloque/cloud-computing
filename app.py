@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import pandas as pd
 import numpy as np
 
@@ -39,3 +39,9 @@ def display_word():
     new_word_id = draw_word()
     new_word = db[new_word_id]['words']
     return render_template('play.html', new_word=new_word)
+
+@app.route('/play/guess', methods = ['POST'])
+def guess_post():
+    text = request.form['guess'].lower()
+    #return render_template('play.html', new_word=text.lower())
+    return render_template('play.html', new_word=text)

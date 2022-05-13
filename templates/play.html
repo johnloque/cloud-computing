@@ -7,5 +7,9 @@
 </head>
 <body>
     <h2>{{ new_word }}</h2>
+    <form action="/play/guess" method="POST">
+        <label for="guess">Suggest a new word :</label><br/>
+        <input type="text" id="guess" name="guess"/>
+    </form>
 </body>
 </html>
