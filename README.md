@@ -32,4 +32,4 @@ The students involved in this project are :
 - CAPOT Michel
 - CHEKEMBOU Dounia
 - TAWFIKI Réda
-- VERDIERE Jeffrey
+- VERDIÈRE Jeffrey
