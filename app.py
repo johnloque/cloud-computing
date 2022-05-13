@@ -77,7 +77,8 @@ def play_hangman():
         else :
             guessed_letters.append(new_letter)
             masked_word = mask_word(target_list, guessed_letters)
-            n_trials -= 1
+            if new_letter not in target_list :
+                n_trials -= 1
             if all(char in guessed_letters for char in list(set(target_list))) :
                 win = True
             return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name='Suggest a new character : ', win=win)

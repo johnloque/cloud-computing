@@ -9,7 +9,7 @@
     <h1>Let's play Hangman!</h1>
     <h2>{{ new_word }}</h2>
     {% if win == True %}
-    <h2>Congrats, you won the game within {{ 10 - n_trials }} trials!</h2>
+    <h2>Congrats, you won the game with only {{ 10 - n_trials }} wrong guesses!</h2>
     {% else %}
         {% if n_trials == 0 %}
         <h2>Sorry, you tried too many times, you lost the game.</h2>
