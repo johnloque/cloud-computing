@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Hangman API - Session history</title>
+</head>
+<body>
+    <h1>Here are your Hangman stats!</h1>
+    {% if history['games_played'] == 0 %}
+    <h2>But it looks like you have not played any game yet...</h2>
+    {% else %}
+    <h2>You won {{ history['won'] }} games out of {{ history['games_played'] }}.</h2>
+    <h2>Your average number of trials is {{ history['sum_n_trials']/history['games_played'] }}.</h2>
+    {% endif %}
+</body>
+</html>

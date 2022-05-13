@@ -31,13 +31,14 @@ def mask_word(target_list, guessed_letters):
             masked_word += '*'
     return masked_word
 
-#global variables
+#global session variables
 
 db = create_db()
 n_trials = 10
 target_list = []
 guessed_letters = []
 win = False
+history = {'games_played' : 0, 'won' : 0, 'n_trials' : []}
 
 #endpoints
 
@@ -71,8 +72,10 @@ def play_hangman():
     global target_list
     global guessed_letters
     global win
+    global history
 
     if request.method == 'GET':
+        history['games_played'] += 1
         new_word_id = draw_word()
         new_word = db[new_word_id]['words']
         db[new_word_id]['counts'] += 1
@@ -96,4 +99,14 @@ def play_hangman():
                 n_trials -= 1
             if all(char in guessed_letters for char in list(set(target_list))) :
                 win = True
+                history['won'] += 1
+                history['n_trials'].append(n_trials)
             return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name='Suggest a new character : ', win=win)
+
+@app.route('/history')
+def display_history():
+    global history
+    while len(history['n_trials']) < history['games_played'] :
+        history['n_trials'].append(10)
+    history['sum_n_trials'] = sum(history['n_trials'])
+    return render_template('history.html', history=history)
