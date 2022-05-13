@@ -5,9 +5,8 @@ h1 {
     padding: 10px;
 }
 
-h2 {
-    border: 2px #eee solid;
-    color: black;
-    text-align: center;
-    padding: 10px;
+
+
+.button{
+    background-color: black;
 }
