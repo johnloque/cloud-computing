@@ -4,9 +4,42 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <title>Hangman API - Add new word</title>
+    <style>
+        .button{
+            font-size:20px;
+            margin-right: 20px;
+            margin-left: 20px;
+            text-align: center;
+            background-color: brown;
+            color: white;
+            text-align:center;
+            border-radius: 2rem;
+            width: 400px;
+            height: 120px;
+        }
+
+        .button:hover{
+            background-color: rgb(186, 48, 48);
+        }
+
+        .div1{
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        a{
+            text-decoration: none;
+            color:white; 
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <h1>Add a new word to our Hangman database!</h1>
+    <div class="div1">
+        <button class="button"> <a href="/play">Start a new game</a></button>
+        <button class="button"><a href='/history'>View session history</a></button>
+    </div>
     <table>
         <thead>
             <tr>
