@@ -1,5 +1,4 @@
 from flask import Flask, request, render_template
-import pandas as pd
 import numpy as np
 
 app = Flask(__name__)
@@ -17,9 +16,9 @@ def create_db():
 #play functions
 
 def draw_word():
-    df = pd.DataFrame(db)
-    logits = pd.Series(df['counts'].map(lambda x : df['counts'].max() - x + 1))
-    new_word_id = np.random.choice([i for i in range(len(df))], p=logits/sum(logits))
+    counts = [dic["counts"] for dic in db]
+    logits = np.array(list(map(lambda x: max(counts) - x + 1, counts)))
+    new_word_id = np.random.choice([i for i in range(len(counts))], p=logits/sum(logits))
     return new_word_id
 
 def mask_word(target_list, guessed_letters):
