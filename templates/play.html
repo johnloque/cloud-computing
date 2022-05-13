@@ -11,11 +11,7 @@
     <h2>{{ new_word }}</h2>
     <br><br><br>
     {% if win == True %}
-<<<<<<< HEAD
-    <h3>Congrats, you won the game within {{ 10 - n_trials }} trials!</h3>
-=======
-    <h2>Congrats, you won the game with only {{ 10 - n_trials }} wrong guesses!</h2>
->>>>>>> playpage
+    <h3>Congrats, you won the game with {{ 10 - n_trials }} mistake(s)!</h3>
     {% else %}
         {% if n_trials == 0 %}
         <h4>Sorry, you tried too many times, you lost the game.</h4>
@@ -25,14 +21,16 @@
                 <input type="text" maxlength="1" id="guess" name="guess"/>
             </form>
             <h5><i>You have {{ n_trials }} remaining trials</i></h5>
-            <br><br><br>
-    <div class="div2">
-        <button class="button"> <a href/play>Play again</a></button>
-        <button class="button"> <a href/index>Menu</a></button>
-    </div>
-            
+
         {% endif %}
     {% endif %}
+    <br><br><br>
+    <div class="div2">
+        <button class="button"> <a href="/play">Play again</a></button>
+        <button class="button"> <a href="/">Menu</a></button>
+    </div>
+            
+        
 
 
     <style>
@@ -46,14 +44,14 @@
             color:darkgreen;
             text-align:center;
             margin: 0 auto;
-            font-size: 60px;
+            font-size: 45px;
         }
 
         h4{
             color:darkred;
             text-align:center;
             margin: 0 auto;
-            font-size: 60px;
+            font-size: 45px;
         }
 
         h5{
