@@ -10,6 +10,7 @@ We decided to developp a Hangman API.
 The hangman API is divided into 4 different web pages :
 - The 'home' page, where the user has the possibility to start a new game or to add a new word to the existing database.
 - The 'play' page, which contains the main part of our application. This page will allow the user to play Hangman, by suggesting letters. In return, the application will let the user know if his suggested letter is present in the word to guess or not, and if it is the case, it will reveal this letter of the hidden word.
+It may be interesting to note that the words are drawn according to a probability inversely proportional to the number of times they have been played.
 - The 'database' page, which will allow the user to consult the words already present in the current database, but also to add other words in order to enrich it.
 - The 'history' page, which will allow the user to be aware of the number of wins or loses he has on his record.
 
