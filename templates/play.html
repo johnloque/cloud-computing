@@ -7,19 +7,87 @@
 </head>
 <body>
     <h1>Let's play Hangman!</h1>
+    <br><br><br>
     <h2>{{ new_word }}</h2>
+    <br><br><br>
     {% if win == True %}
-    <h2>Congrats, you won the game within {{ 10 - n_trials }} trials!</h2>
+    <h3>Congrats, you won the game within {{ 10 - n_trials }} trials!</h3>
     {% else %}
         {% if n_trials == 0 %}
-        <h2>Sorry, you tried too many times, you lost the game.</h2>
+        <h4>Sorry, you tried too many times, you lost the game.</h4>
         {% else %}
-            <h2>{{ n_trials }} remaining trials</h2>
             <form action="/play" method="POST">
                 <label for="guess">{{ field_name }}</label><br/>
                 <input type="text" maxlength="1" id="guess" name="guess"/>
             </form>
+            <h5><i>You have {{ n_trials }} remaining trials</i></h5>
+            <br><br><br>
+    <div class="div2">
+        <button class="button"> <a href/play>Play again</a></button>
+        <button class="button"> <a href/index>Menu</a></button>
+    </div>
+            
         {% endif %}
     {% endif %}
+
+
+    <style>
+        h2{
+            text-align:center;
+            margin: 0 auto;
+            font-size: 80px;
+        }
+
+        h3{
+            color:darkgreen;
+            text-align:center;
+            margin: 0 auto;
+            font-size: 60px;
+        }
+
+        h4{
+            color:darkred;
+            text-align:center;
+            margin: 0 auto;
+            font-size: 60px;
+        }
+
+        h5{
+            text-align:center;
+            font-size:25px;
+        }
+
+        form{
+            font-size:20px;
+            text-align:center;
+        }
+
+        .button{
+            font-size:10px;
+            margin-right: 20px;
+            margin-left: 20px;
+            text-align:center;
+            background-color: brown;
+            color: white;
+            border-radius: 2rem;
+            width: 100px;
+            height: 45px;
+        }
+
+        .button:hover{
+            background-color: rgb(186, 48, 48);
+        }
+
+        .div2{
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        a{
+            text-decoration: none;
+            color:white; 
+            text-align: center;
+        }
+    </style>
 </body>
 </html>
