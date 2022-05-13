@@ -7,9 +7,10 @@
 </head>
 <body>
     <h2>{{ new_word }}</h2>
-    <form action="/play/guess" method="POST">
-        <label for="guess">Suggest a new word :</label><br/>
-        <input type="text" id="guess" name="guess"/>
+    <h2>{{ n_trials }} tentatives restantes</h2>
+    <form action="/play" method="POST">
+        <label for="guess">Suggest a new letter :</label><br/>
+        <input type="text" maxlength="1" id="guess" name="guess"/>
     </form>
 </body>
 </html>
