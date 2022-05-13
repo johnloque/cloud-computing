@@ -1,13 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <title>Hangman API - Home</title>
 </head>
+
 <body>
-   <h1>Welcome to the Hangman API!</h1>
-    <h2><button type="button" class="button">Start a new game </button></h2>
-    <button href='/db'>Add a new word</button>
+    <h1>Welcome to the Hangman API!</h1>  
+    <br><br><br><br><br><br><br>
+    <div class="div1">
+        <button class="button"> <a href="#">Start a new game </a></button>
+        <button class="button"> <a href='/db'>Add a new word</a></button>
+    </div>
+    
+
+    <style>
+        .button{
+            font-size:20px;
+            margin-right: 20px;
+            margin-left: 20px;
+            text-align: center;
+            background-color: brown;
+            color: white;
+            text-align:center;
+            border-radius: 2rem;
+            width: 400px;
+            height: 120px;
+        }
+
+        .button:hover{
+            background-color: rgb(186, 48, 48);
+        }
+
+
+        .div1{
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        a{
+            text-decoration: none;
+            color:white; 
+            text-align: center;
+        }
+    </style>
+
 </body>
 </html>
