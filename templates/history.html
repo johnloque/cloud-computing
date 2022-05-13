@@ -44,7 +44,8 @@
     <h2>But it looks like you have not played any game yet...</h2>
     {% else %}
     <h2>You won {{ history['won'] }} games out of {{ history['games_played'] }}.</h2>
-    <h2>Your average number of trials is {{ history['sum_n_trials']/history['games_played'] }}.</h2>
+    <h2>Your average number of wrong guesses is {{ history['sum_n_trials']/history['games_played'] }}.</h2>
+    <img src="{{ plot_path }}">
     {% endif %}
 </body>
 </html>

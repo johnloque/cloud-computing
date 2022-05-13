@@ -63,8 +63,6 @@ def add_word():
             field_name = "The word already exists"
             return render_template('db.html', field_name=field_name)
 
-    
-
 @app.route('/play', methods=['GET','POST'])
 def play_hangman():
     global db
@@ -100,7 +98,7 @@ def play_hangman():
             if all(char in guessed_letters for char in list(set(target_list))) :
                 win = True
                 history['won'] += 1
-                history['n_trials'].append(n_trials)
+                history['n_trials'].append(10-n_trials)
             return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name='Suggest a new character : ', win=win)
 
 @app.route('/history')
@@ -109,4 +107,4 @@ def display_history():
     while len(history['n_trials']) < history['games_played'] :
         history['n_trials'].append(10)
     history['sum_n_trials'] = sum(history['n_trials'])
-    return render_template('history.html', history=history)
+    return render_template('history.html', history=history, plot_path = 'history.png')
