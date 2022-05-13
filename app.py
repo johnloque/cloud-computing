@@ -52,15 +52,18 @@ def display_db():
 @app.route('/db', methods=('GET', 'POST'))
 def add_word():
     global db
-    if request.method == 'POST' : 
+    list_word = [db[elt]["words"] for elt in range(len(db))]
+    if request.method == 'POST': 
         word = request.form['word']
-        if word not in db["words"]:
+        if word not in list_word:
             db.append({'words':word, 'counts':0})
             field_name = "The word has been added"
-            return render_template('db.html', field_name=field_name)
+            return render_template('db.html', db =db, field_name=field_name)
         else : 
             field_name = "The word already exists"
-            return render_template('db.html', field_name=field_name)
+            return render_template('db.html',db=db,field_name=field_name)
+    elif request.method == 'GET':
+        return render_template('db.html',db=db)
 
     
 
