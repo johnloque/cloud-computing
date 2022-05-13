@@ -7,10 +7,18 @@
 </head>
 <body>
     <h2>{{ new_word }}</h2>
-    <h2>{{ n_trials }} remaining trials</h2>
-    <form action="/play" method="POST">
-        <label for="guess">{{ field_name }}</label><br/>
-        <input type="text" maxlength="1" id="guess" name="guess"/>
-    </form>
+    {% if win == True %}
+    <h2>Congrats, you won the game within {{ 10 - n_trials }} trials !</h2>
+    {% else %}
+        {% if n_trials == 0 %}
+        <h2>Sorry, you tried too many times, you lost the game.</h2>
+        {% else %}
+            <h2>{{ n_trials }} remaining trials</h2>
+            <form action="/play" method="POST">
+                <label for="guess">{{ field_name }}</label><br/>
+                <input type="text" maxlength="1" id="guess" name="guess"/>
+            </form>
+        {% endif %}
+    {% endif %}
 </body>
 </html>
