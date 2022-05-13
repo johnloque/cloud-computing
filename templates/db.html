@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
     <title>Hangman API - Add new word</title>
 </head>
 <body>
-    <h1>Add a new word to our Hangman database!</h1>
-    <table>
+    <h1>Existing words in our database</h1>
+    <table cellspacing="5">
         <thead>
             <tr>
                 <th>Word</th>
@@ -27,11 +26,77 @@
 
     <form method="POST">
         <div class="form-group">
-            <label for="word">Word</label>
+            <br>
+            <label for="word"><i>Let your imagination run free!</i></label>
+            <br><br><br>
             <input type="text" name="word"
-                placeholder="Add Word" class="form-control"
-                value="{{ request.form['word'] }}">{{ field_name }}</input>
+                placeholder="Add New Word" class="form-control"
+                value="{{ request.form['word'] }}"></input>
+            <br><br><br>
+            <h2>{{ field_name }}</h2>
         </div>
     </form>
+
+    <br><br><br>
+    <div class="div3">
+        <button class="button"> <a href="/play">Play</a></button>
+        <button class="button"> <a href="/">Menu</a></button>
+    </div>
+
+    <style>
+        h1 {
+            border: 2px #eee solid;
+            color: brown;
+            text-align: center;
+            padding: 10px;
+        }
+
+        form{
+            font-size:20px;
+            text-align:center;
+        }
+
+        .button{
+            font-size:10px;
+            margin-right: 20px;
+            margin-left: 20px;
+            text-align:center;
+            background-color: brown;
+            color: white;
+            border-radius: 2rem;
+            width: 100px;
+            height: 45px;
+        }
+
+        .button:hover{
+            background-color: rgb(186, 48, 48);
+        }
+
+        .div3{
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        a{
+            text-decoration: none;
+            color:white; 
+            text-align: center;
+        }
+
+        table{
+            text-align: center;
+            margin: 0 auto;
+            padding: 5px;
+            border: 1px solid brown;
+        }
+
+        h2{
+            text-align:center;
+            margin: 0 auto;
+            font-size:20px;
+        }
+
+      
+    </style>
 </body>
 </html>

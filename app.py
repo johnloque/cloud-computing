@@ -7,7 +7,7 @@ app = Flask(__name__)
 #db functions
 
 def create_db():
-    base_words = ['chien','chat','voiture']
+    base_words = ['dog','cat','truck','tacos','shoe','computer','student','project']
     base_counts = [0] * len(base_words)
     db = []
     for word, count in zip(base_words, base_counts):
@@ -28,7 +28,7 @@ def mask_word(target_list, guessed_letters):
         if char in guessed_letters :
             masked_word += char
         else :
-            masked_word += '*'
+            masked_word += '_ '
     return masked_word
 
 #global variables
@@ -57,10 +57,10 @@ def add_word():
         word = request.form['word']
         if word not in list_word:
             db.append({'words':word, 'counts':0})
-            field_name = "The word has been added"
+            field_name = "The word " +"'"+word+"'"+ " has been added!"
             return render_template('db.html', db =db, field_name=field_name)
         else : 
-            field_name = "The word already exists"
+            field_name = "The word " +"'"+word+"'"+ " already exists..."
             return render_template('db.html',db=db,field_name=field_name)
     elif request.method == 'GET':
         return render_template('db.html',db=db)
