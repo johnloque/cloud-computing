@@ -11,7 +11,11 @@
     <h2>{{ new_word }}</h2>
     <br><br><br>
     {% if win == True %}
+<<<<<<< HEAD
     <h3>Congrats, you won the game within {{ 10 - n_trials }} trials!</h3>
+=======
+    <h2>Congrats, you won the game with only {{ 10 - n_trials }} wrong guesses!</h2>
+>>>>>>> playpage
     {% else %}
         {% if n_trials == 0 %}
         <h4>Sorry, you tried too many times, you lost the game.</h4>
