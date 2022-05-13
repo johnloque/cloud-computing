@@ -58,15 +58,13 @@
     </table>
     <h1>{% block title %} Add New Word {% endblock %}</h1>
 
-    <form method="post">
+    <form method="POST">
         <div class="form-group">
             <label for="word">Word</label>
             <input type="text" name="word"
                 placeholder="Add Word" class="form-control"
-                value="{{ request.form['word'] }}"></input>
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">Submit</button>
+                value="{{ request.form['word'] }}">{{ field_name }}</input>
+            </form>
         </div>
     </form>
 </body>
