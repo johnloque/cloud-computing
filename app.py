@@ -14,8 +14,6 @@ def create_db():
         db.append({'words':word, 'counts':count})
     return db
 
-db = create_db()
-
 #play functions
 
 def draw_word():
@@ -24,7 +22,21 @@ def draw_word():
     new_word_id = np.random.choice([i for i in range(len(df))], p=logits/sum(logits))
     return new_word_id
 
+def mask_word(target_list, guessed_letters):
+    masked_word = ''
+    for char in target_list :
+        if char in guessed_letters :
+            masked_word += char
+        else :
+            masked_word += '*'
+    return masked_word
+
+#global variables
+
+db = create_db()
 n_trials = 10
+target_list = []
+guessed_letters = []
 
 #endpoints
 
@@ -37,13 +49,28 @@ def display_db():
     return render_template('db.html', db=db)
 
 @app.route('/play', methods=['GET','POST'])
-def display_word():
+def play_hangman():
+    global db
     global n_trials
+    global target_list
+    global guessed_letters
+
     if request.method == 'GET':
         new_word_id = draw_word()
         new_word = db[new_word_id]['words']
-        return render_template('play.html', n_trials = n_trials, new_word=new_word)
+        target_list = [char for char in new_word]
+        guessed_letters = []
+        masked_word = mask_word(target_list, guessed_letters)
+        return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name='Suggest a new character : ')
+
     elif request.method == 'POST':
-        text = request.form['guess'].lower()
-        n_trials -= 1
-        return render_template('play.html', n_trials = n_trials, new_word=text)
+        new_letter = request.form['guess'].lower()
+        if new_letter in guessed_letters :
+            masked_word = mask_word(target_list, guessed_letters)
+            field_name = "You have already suggested this letter. Suggest another one : "
+            return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name=field_name)
+        else :
+            guessed_letters.append(new_letter)
+            masked_word = mask_word(target_list, guessed_letters)
+            n_trials -= 1
+            return render_template('play.html', n_trials = n_trials, new_word=masked_word, field_name='Suggest a new character : ')

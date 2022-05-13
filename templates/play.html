@@ -7,9 +7,9 @@
 </head>
 <body>
     <h2>{{ new_word }}</h2>
-    <h2>{{ n_trials }} tentatives restantes</h2>
+    <h2>{{ n_trials }} remaining trials</h2>
     <form action="/play" method="POST">
-        <label for="guess">Suggest a new letter :</label><br/>
+        <label for="guess">{{ field_name }}</label><br/>
         <input type="text" maxlength="1" id="guess" name="guess"/>
     </form>
 </body>
