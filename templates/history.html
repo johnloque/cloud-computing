@@ -1,27 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Hangman API - Home</title>
-</head>
-
-<body>
-    <h1>Welcome to the Hangman API!</h1>  
-    <br><br><br><br><br><br><br>
-    <div class="div1">
-        <button class="button"><a href="/play">Start a new game </a></button>
-        <button class="button"><a href='/db'>Add a new word</a></button>
-        <button class="button"><a href='/history'>View session history</a></button>
-    </div>
-    
-
+    <link rel="stylesheet" href="{{ url_for('static', filename= 'css/style.css') }}">
+    <title>Hangman API - Session history</title>
     <style>
         h1 {
             border: 2px #eee solid;
             color: brown;
             text-align: center;
             padding: 10px;
+        }
+
+        h2{
+            text-align:center;
+            margin: 0 auto;
+            font-size: 30px;
         }
 
         .button{
@@ -41,7 +35,6 @@
             background-color: rgb(186, 48, 48);
         }
 
-
         .div1{
             text-align: center;
             margin: 0 auto;
@@ -53,6 +46,19 @@
             text-align: center;
         }
     </style>
-
+</head>
+<body>
+    <h1>Here are your Hangman stats!</h1>
+    <div class="div1">
+        <button class="button"><a href="/play">Start a new game</a></button>
+        <button class="button"><a href='/db'>Add a new word</a></button>
+    </div>
+    <br><br><br>
+    {% if history['games_played'] == 0 %}
+    <h2>But it looks like you have not played any game yet...</h2>
+    {% else %}
+    <h2>You won {{ history['won'] }} games out of {{ history['games_played'] }}.</h2>
+    <h2>Your average number of wrong guesses is {{ history['sum_n_trials']/history['games_played'] }}.</h2>
+    {% endif %}
 </body>
 </html>
