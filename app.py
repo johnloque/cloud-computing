@@ -26,7 +26,7 @@ def mask_word(target_list, guessed_letters):
     masked_word = ''
     for char in target_list :
         if char in guessed_letters :
-            masked_word += char
+            masked_word += f'{char} '
         else :
             masked_word += '_ '
     return masked_word
