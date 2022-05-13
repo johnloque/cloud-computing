@@ -49,6 +49,21 @@ def home():
 def display_db():
     return render_template('db.html', db=db)
 
+@app.route('/db', methods=('GET', 'POST'))
+def add_word():
+    global db
+    if request.method == 'POST' : 
+        word = request.form['word']
+        if word not in db["words"]:
+            db.append({'words':word, 'counts':0})
+            field_name = "The word has been added"
+            return render_template('db.html', field_name=field_name)
+        else : 
+            field_name = "The word already exists"
+            return render_template('db.html', field_name=field_name)
+
+    
+
 @app.route('/play', methods=['GET','POST'])
 def play_hangman():
     global db
